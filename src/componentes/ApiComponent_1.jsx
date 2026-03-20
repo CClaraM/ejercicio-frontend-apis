@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 
 export default function ApiComponent1(){
     const [user, setUser]=useState([])
@@ -19,10 +19,10 @@ export default function ApiComponent1(){
         //  no hay Try catch,
     }
     return(
-        <div >
-            <h1>Lstado de usuarios</h1>
-            <Table striped bordered hover responsive>
-                <thead>
+        <Container className="mt-4" >
+            <h1 className="mb-4 text-centre">Lstado de usuarios</h1>
+            <Table striped bordered hover responsive className="shadow-sm align-middle">
+                <thead className="table-dark">
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
@@ -34,7 +34,8 @@ export default function ApiComponent1(){
                 <tbody>
                     {/** Se recorre el arregolo y se insertan los datos ejemplo: row<dato,dato,dato> */}
                     {user.map((u)=>(
-                        <tr>
+                        <tr key={u.id}>
+                        
                             <td>{u.id}</td>
                             <td>{u.firstName} {u.lastName}</td>
                             <td>{u.email}</td>
@@ -44,6 +45,6 @@ export default function ApiComponent1(){
                     ))}
                 </tbody>
             </Table>
-        </div>
+        </Container>
     )
 }
